@@ -9,25 +9,22 @@ class ChapterController extends AbstractController
     /**
      * List chapters
      */
-    public function indexAdmin(): string
+    public function adminIndex(): string
     {
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectAll('id');
 
-        return $this->twig->render('Chapter/index_admin.html.twig', ['chapters' => $chapters]);
+        return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
     }
-
-
-    
-    /**
+   /**
      * Show admin informations for a specific chapter
      */
-    public function showAdmin(int $id): string
+    public function adminShow(int $id): string
     {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->selectOneById($id);
 
-        return $this->twig->render('Chapter/show_admin.html.twig', ['chapter' => $chapter]);
+        return $this->twig->render('Chapter/admin_show.html.twig', ['chapter' => $chapter]);
     }
 
     // /**
