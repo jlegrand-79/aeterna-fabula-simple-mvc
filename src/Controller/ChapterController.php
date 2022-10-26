@@ -55,27 +55,27 @@ class ChapterController extends AbstractController
     //     ]);
     // }
 
-    // /**
-    //  * Add a new item
-    //  */
-    // public function add(): ?string
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         // clean $_POST data
-    //         $item = array_map('trim', $_POST);
+    /**
+     * Add a new item
+     */
+    public function adminAdd(): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $chapter = array_map('trim', $_POST);
 
-    //         // TODO validations (length, format...)
+            // TODO validations (length, format...)
 
-    //         // if validation is ok, insert and redirection
-    //         $itemManager = new ItemManager();
-    //         $id = $itemManager->insert($item);
+            // if validation is ok, insert and redirection
+            $chapterManager = new ChapterManager();
+            $id = $chapterManager->adminInsert($chapter);
 
-    //         header('Location:/items/show?id=' . $id);
-    //         return null;
-    //     }
+            header('Location:/chapters/admin_show?id=' . $id);
+            return null;
+        }
 
-    //     return $this->twig->render('Item/add.html.twig');
-    // }
+        return $this->twig->render('Chapter/admin_add.html.twig');
+    }
 
     // /**
     //  * Delete a specific item
