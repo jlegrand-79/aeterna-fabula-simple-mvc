@@ -7,8 +7,8 @@
     <p>Image : {{ chapter.background_image }}</p>
     <p>Balise alt de l'image : {{ chapter.background_image_alt }}</p>
     
-    {# <a href="/chapters/edit?id={{ item.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
+    <a href="/chapters/admin_edit?id={{ chapter.id }}">Modifier le chapitre</a>
+    {# <form action="/items/delete" method="POST">
         <input type="hidden" name="id" value="{{ item.id }}">
         <button>Delete</button>
     </form> #}

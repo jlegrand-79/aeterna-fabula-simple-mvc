@@ -1,6 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Ajouter un nouveau chapitre</h1>
-    {% include 'Chapter/_admin_form.html.twig' %}
-{% endblock %}
+	<h1>Ajouter un nouveau chapitre</h1>
+	{% include 'Chapter/_admin_form.html.twig' %}
+
+	<p>
+		<button>Ajouter le chapitre</button>
+	</p>
+</form>
+<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans :
+								    public/assets/images/</p>
+<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>{% endblock %}

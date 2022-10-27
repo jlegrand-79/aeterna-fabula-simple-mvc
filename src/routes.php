@@ -16,4 +16,5 @@ return [
     'chapters' => ['ChapterController', 'adminIndex',],
     'chapters/admin_show' => ['ChapterController', 'adminShow', ['id']],
     'chapters/admin_add' => ['ChapterController', 'adminAdd',],
+    'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']],
 ];

@@ -9,7 +9,7 @@ class ChapterManager extends AbstractManager
     public const TABLE = 'chapter';
 
     /**
-     * Insert new chapter in database
+     * Insert new chapter in database / admin only
      */
     public function adminInsert(array $chapter): int
     {
@@ -41,15 +41,28 @@ class ChapterManager extends AbstractManager
         return (int)$this->pdo->lastInsertId();
     }
 
-    // /**
-    //  * Update item in database
-    //  */
-    // public function update(array $item): bool
-    // {
-    //     $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-    //     $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
-    //     $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
+    /**
+     * Chapter update item in database / admin only
+     */
+    public function adminUpdate(array $chapter): bool
+    {
+        $query = "UPDATE " . self::TABLE . " SET 
+        `name` = :name,
+        `title` = :title,
+        `description` = :description,
+        `background_image` = :background_image,
+        `background_image_alt` = :background_image_alt
+        WHERE id=:id
+        ";
 
-    //     return $statement->execute();
-    // }
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $chapter['id'], PDO::PARAM_INT);
+        $statement->bindValue('name', $chapter['name'], PDO::PARAM_STR);
+        $statement->bindValue('title', $chapter['title'], PDO::PARAM_STR);
+        $statement->bindValue('description', $chapter['description'], PDO::PARAM_STR);
+        $statement->bindValue('background_image', $chapter['background_image'], PDO::PARAM_STR);
+        $statement->bindValue('background_image_alt', $chapter['background_image_alt'], PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
 }
